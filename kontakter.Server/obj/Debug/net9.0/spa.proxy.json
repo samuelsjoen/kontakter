@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:49979",
+"RedirectUrl": "",
+"LaunchCommand": "npm run dev",
+"WorkingDirectory": "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\kontakter\\kontakter.Server\\..\\kontakter.client",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}
