@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\Kontakter.Server.csproj": {}
+    "c:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\Kontakter.Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\Kontakter.Server.csproj": {
+    "c:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\Kontakter.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\Kontakter.Server.csproj",
+        "projectUniqueName": "c:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\Kontakter.Server.csproj",
         "projectName": "Kontakter.Server",
-        "projectPath": "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\Kontakter.Server.csproj",
+        "projectPath": "c:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\Kontakter.Server.csproj",
         "packagesPath": "C:\\Users\\samue\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\obj\\",
+        "outputPath": "c:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -50,6 +50,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.1, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.1, )"
@@ -58,9 +62,33 @@
               "target": "Package",
               "version": "[9.*-*, )"
             },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[9.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.1, )"
+            },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.21.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             }
           },
           "imports": [

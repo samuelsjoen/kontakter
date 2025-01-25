@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Kontakter.Server.props" />
+</Project>

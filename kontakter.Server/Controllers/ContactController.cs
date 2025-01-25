@@ -1,14 +1,17 @@
+using Kontakter.Server.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Kontakter.Server.Controllers
+namespace Kontakter.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ContactsController : ControllerBase
+    public class ContactsController(ILogger<ContactsController> logger) : ControllerBase
     {
-       [HttpGet(Name = "GetContacts")]
-       public IEnumerable<Contact> Get() {
-        
-       } 
+        [HttpGet(Name = "GetContacts")]
+        public IEnumerable<Contact> GetContacts()
+        {
+            logger.LogInformation("Fetching contacts");
+            throw new NotImplementedException();
+        }
     }
 }
