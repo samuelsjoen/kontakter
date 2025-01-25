@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700'); /* Import Garamond from Google Fonts */
+
+.website {
+  font-family: "Rubik", serif;
+  color: rgb(108, 108, 108);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 98vw;
+}
+
+.navBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
+  top: 0;
+  background-color: rgb(113, 135, 78);
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+  position: static;
+}
+
+.navBar .banner {
+  color:#ffffff;
+  font-size: clamp(20px, 5vw, 24px);
+  cursor: pointer;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+}
+
+.navBar .banner:hover {
+  color:#333;
+}
+
+.navBar .buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.navBar .navBarButton {
+  color:#ffffff;
+}
+
+.navBar .navBarButton:hover {
+  color:#333;
+}
+
+.content .logIn, .content .signUp {
+  height: 74vh;
+}
+
+@media (max-width: 767px) {
+  .content .logIn, .content .signUp {
+    height: 81vh;
+  }
+}
+
+.logInForm, .signUpForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.logInForm button, .signUpForm button {
+  margin-top: 20px;
+}
+
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contacts .search {
+  width: 95%;
+}
+
+.contacts .contactList {
+  margin: 20px;
+  display: grid;
+  gap: 20px;
+  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 767px) {
+  .contacts .contactList {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+.newContact {
+  width: 100%;
+  height: 100%;
+  font-size: x-large;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: rgb(113, 135, 78);
+}
+
+.contactCard, .addNewContact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-width: thin;
+  border-style: solid;
+  border-color: #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+  transition: border-style 0.1s ease;
+}
+
+.contactCard:hover {
+  color:#333;
+}
+
+.contactCard:hover .name {
+  font-weight: bold;
+}
+
+.newContact:hover {
+  background-color: rgb(101, 134, 47);
+  font-size: xx-large;
+}
+
+.contactCard .name {
+  text-transform: uppercase;
+  font-size: larger;
+}
+
+.contactCard .buttonRow {
+  display: flex;
+  flex-direction: row;
+  visibility: hidden;
+  gap: 10px;
+}
+
+.contactCard:hover .buttonRow {
+  visibility: visible;
+}
+
+.contactCard .buttonRow .removeButton, .updateButton {
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+
+.contactCard .buttonRow .removeButton:hover {
+  background-color: #e35d5d;
+  color: #ffffff;
+}
+
+.addOrUpdateBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+} 
+
+.addOrUpdateBox h3 {
+  font-weight: 400;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+input {
+  width: 90%;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.contactForm button {
+  margin-top: 20px;
+  background-color: rgb(113, 135, 78);
+  color: #ffffff;
+  width: 95%;
+}
+
+.footer {
+  font-size: clamp(12px, 1vw, 15px);
+  padding-top: 10px;
+  text-align: center;
+  margin: 20px;
+}
