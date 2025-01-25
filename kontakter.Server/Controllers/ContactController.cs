@@ -1,6 +1,7 @@
 using Kontakter.Server.Data;
 using Kontakter.Server.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Kontakter.Controllers
 {
@@ -12,7 +13,8 @@ namespace Kontakter.Controllers
         public async Task<ActionResult<IEnumerable<Contact>>> GetContacts()
         {
             logger.LogInformation("Fetching contacts");
-            throw new NotImplementedException();
+            var contacts = await kontakterContext.Contacts.ToListAsync();
+            return contacts;
         }
 
         [HttpGet("{id}")]

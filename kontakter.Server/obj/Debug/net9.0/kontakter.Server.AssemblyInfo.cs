@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Kontakter.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e6fcf32a1026c7b3b4fc8ed6cb81596d7c5f51f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a2ff44224977a9c4ac3562897b8cec430b872954")]
 [assembly: System.Reflection.AssemblyProductAttribute("Kontakter.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Kontakter.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
