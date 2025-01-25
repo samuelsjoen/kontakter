@@ -1,4 +1,4 @@
-namespace kontakter.Server
+namespace Kontakter.Server
 {
     public class WeatherForecast
     {

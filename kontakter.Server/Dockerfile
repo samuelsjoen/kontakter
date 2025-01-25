@@ -19,20 +19,20 @@ RUN apt-get -y install nodejs
 FROM with-node AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["kontakter.Server/kontakter.Server.csproj", "kontakter.Server/"]
-COPY ["kontakter.client/kontakter.client.esproj", "kontakter.client/"]
-RUN dotnet restore "./kontakter.Server/kontakter.Server.csproj"
+COPY ["Kontakter.Server/Kontakter.Server.csproj", "Kontakter.Server/"]
+COPY ["Kontakter.client/Kontakter.client.esproj", "Kontakter.client/"]
+RUN dotnet restore "./Kontakter.Server/Kontakter.Server.csproj"
 COPY . .
-WORKDIR "/src/kontakter.Server"
-RUN dotnet build "./kontakter.Server.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/Kontakter.Server"
+RUN dotnet build "./Kontakter.Server.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./kontakter.Server.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./Kontakter.Server.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "kontakter.Server.dll"]
+ENTRYPOINT ["dotnet", "Kontakter.Server.dll"]

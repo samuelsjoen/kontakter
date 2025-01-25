@@ -3,7 +3,7 @@
 "ServerUrl": "https://localhost:49979",
 "RedirectUrl": "",
 "LaunchCommand": "npm run dev",
-"WorkingDirectory": "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\kontakter\\kontakter.Server\\..\\kontakter.client",
+"WorkingDirectory": "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\..\\Kontakter.client",
 "MaxTimeoutInSeconds": "120",
 "KeepRunning": "false"
 }

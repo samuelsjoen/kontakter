@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace kontakter.Server.Controllers
+namespace Kontakter.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
