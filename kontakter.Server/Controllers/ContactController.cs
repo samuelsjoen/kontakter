@@ -48,15 +48,10 @@ namespace Kontakter.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> UpdateContact(int id, Contact contact)
+        public async Task<ActionResult> UpdateContact(Contact contact)
         {
             // To do: check that user is authenticated and can update contact with given UID
-            logger.LogInformation($"Updating contact {id}");
-            if (id != contact.ID)
-            {
-                logger.LogError($"Cannot update contact {contact.ID}: id {id} does not match");
-                return BadRequest();
-            }
+            logger.LogInformation($"Updating contact {contact.ID}");
             kontakterContext.Entry(contact).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             try
             {
@@ -64,7 +59,7 @@ namespace Kontakter.Controllers
             }
             catch
             {
-                if (!ContactExists(id))
+                if (!ContactExists(contact.ID))
                 {
                     logger.LogError($"Cannot update contact {contact.ID}: contact does not exist");
                     return NotFound();
@@ -74,7 +69,7 @@ namespace Kontakter.Controllers
                     throw;
                 }
             }
-            logger.LogInformation($"Contact {id} has been updated");
+            logger.LogInformation($"Contact {contact.ID} has been updated");
             return NoContent();
         }
 
