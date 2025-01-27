@@ -29,6 +29,7 @@ namespace Kontakter.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> AddUser(User user)
         {
+            // To do: hash and salt password before storage
             kontakterContext.Add(user);
             await kontakterContext.SaveChangesAsync();
             logger.LogInformation($"Added new user {user.ID}");
