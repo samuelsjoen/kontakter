@@ -1,64 +1,47 @@
 import ContactCard from "./contactCard";
 import AddNewContact from "./addNewContact";
+import { useEffect, useState } from "react";
 
 function contactsGrid() {
+    const [contacts, setContacts] = useState([]);
+    async function fetchContacts(uid) {
+        try {
+            const response = await fetch(`https://localhost:7213/Contact?UID=${uid}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch contacts');
+            }
+            const contacts = await response.json();
+            console.log('Contacts fetched', contacts);
+            setContacts(contacts);
+        } catch (e) {
+            console.error('Error:', e);
+        }
+    }
+    useEffect(() => {
+        fetchContacts(1);
+    }, []);
+
     return (
         <div className="contactList">
             <AddNewContact
-                name = {null}
-                number = {null}
-                address = {null}
+                onChange={fetchContacts}
             />
-            <ContactCard
-                name={"Ola Nordman"}
-                number={"92912942"}
-                address={"Idrettsveien 64, 5063 Bergen"}
-            />
-            <ContactCard
-                name={"Nita Banan"}
-                number={"1234213421"}
-                address={"Bananveien 4, 1110 Epleland"}
-            />
-            <ContactCard
-                name={"Sjoko Per"}
-                number={"123412583"}
-                address={"Idrettsveien 15, 5153 Frappeland"}
-            />
-            <ContactCard
-                name={"Skibidi Eple"}
-                number={"08371934739"}
-                address={"Scheisseveien 12, 0010 Miniland"}
-            />
-            <ContactCard
-                name={"Frida Kahlo"}
-                number={"17306743"}
-                address={"Javeljaveien 31, 7536 Prompeland"}
-            />
-            <ContactCard
-                name={"Ola Nordman"}
-                number={"92912942"}
-                address={"Idrettsveien 64, 5063 Bergen"}
-            />
-            <ContactCard
-                name={"Nita Banan"}
-                number={"1234213421"}
-                address={"Bananveien 4, 1110 Epleland"}
-            />
-            <ContactCard
-                name={"Sjoko Per"}
-                number={"123412583"}
-                address={"Idrettsveien 15, 5153 Frappeland"}
-            />
-            <ContactCard
-                name={"Skibidi Eple"}
-                number={"08371934739"}
-                address={"Scheisseveien 12, 0010 Miniland"}
-            />
-            <ContactCard
-                name={"Frida Kahlo"}
-                number={"17306743"}
-                address={"Javeljaveien 31, 7536 Prompeland"}
-            />
+            {contacts.map(contact => (
+                <ContactCard
+                    uid={contact.uid}
+                    key={contact.id}
+                    id={contact.id} 
+                    name={contact.name}
+                    number={contact.phoneNumber}
+                    address={contact.address}
+                    onChange={fetchContacts}
+                />
+            ))}
         </div>
     )
 }

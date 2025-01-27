@@ -38,54 +38,53 @@ namespace Kontakter.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Contact>> AddContact(Contact contact)
+        public async Task<ActionResult> AddContact(Contact contact)
         {
             // To do: check that user is authenticated and can add contact with given UID
             KontakterContext.Add(contact);
             await KontakterContext.SaveChangesAsync();
             logger.LogInformation($"Added new contact {contact.ID}");
-            return CreatedAtAction(nameof(GetContact), new { id = contact.ID }, contact);
+            return Ok(null);
         }
-
         [HttpPut]
         public async Task<ActionResult> UpdateContact(Contact contact)
         {
             // To do: check that user is authenticated and can update contact with given UID
             logger.LogInformation($"Updating contact {contact.ID}");
+            if (!ContactExists(contact.ID))
+            {
+                logger.LogError($"Cannot update contact {contact.ID}: contact does not exist");
+                return NotFound();
+            }
             KontakterContext.Entry(contact).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             try
             {
                 await KontakterContext.SaveChangesAsync();
+                logger.LogInformation($"Contact {contact.ID} has been updated");
+                return Ok(null);
             }
-            catch
+            catch (Exception ex)
             {
-                if (!ContactExists(contact.ID))
-                {
-                    logger.LogError($"Cannot update contact {contact.ID}: contact does not exist");
-                    return NotFound();
-                } else
-                {
-                    logger.LogError($"$Cannot update contact {contact.ID}: changes not saved");
-                    throw;
-                }
+                logger.LogError($"An error occurred while updating contact {contact.ID}: {ex.Message}");
+                return StatusCode(500, "An unexpected error occurred while updating the contact.");
             }
-            logger.LogInformation($"Contact {contact.ID} has been updated");
-            return NoContent();
         }
 
         [HttpDelete]
-        public async Task<ActionResult> DeleteContact(int id) {
+        public async Task<ActionResult> DeleteContact(int id)
+        {
             // To do: check that user is authenticated and can delete contact with given UID
             logger.LogWarning($"Deleting contact {id}");
             var contact = await KontakterContext.Contacts.FindAsync(id);
-            if (contact == null) {
+            if (contact == null)
+            {
                 logger.LogError($"Deleting contact {id} failed: no such contact found");
                 return NotFound();
             }
             KontakterContext.Remove(contact);
             await KontakterContext.SaveChangesAsync();
             logger.LogInformation($"Contact {id} has been deleted");
-            return NoContent();
+            return Ok(null);
         }
 
         private bool ContactExists(int id)
