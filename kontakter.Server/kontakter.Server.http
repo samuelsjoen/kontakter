@@ -1,6 +1,6 @@
-@kontakter.Server_HostAddress = http://localhost:5228
+@Kontakter.Server_HostAddress = http://localhost:5228
 
-GET {{kontakter.Server_HostAddress}}/weatherforecast/
+GET {{Kontakter.Server_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
