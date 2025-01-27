@@ -7,14 +7,14 @@ namespace Kontakter.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ContactController(KontakterContext kontakterContext, ILogger<ContactController> logger) : ControllerBase
+    public class ContactController(KontakterContext KontakterContext, ILogger<ContactController> logger) : ControllerBase
     {
         [HttpGet(Name = "GetContacts")]
         public async Task<ActionResult<IEnumerable<Contact>>> GetContacts(int UID)
         {
             // To do: check that user is authenticated and UID belongs to them
             logger.LogInformation($"Fetching contacts for {UID}");
-            var contacts = await kontakterContext.Contacts.Where(contact => contact.UID == UID).ToListAsync();
+            var contacts = await KontakterContext.Contacts.Where(contact => contact.UID == UID).ToListAsync();
             logger.LogInformation($"Contacts fetched for {UID}");
             return contacts;
         }
@@ -23,7 +23,7 @@ namespace Kontakter.Controllers
         public async Task<ActionResult<Contact>> GetContact(int id)
         {
             logger.LogInformation($"Fetching contact {id}");
-            var contact = await kontakterContext.Contacts.FindAsync(id);
+            var contact = await KontakterContext.Contacts.FindAsync(id);
 
             // To do: check that user is authenticated and can access contact information
 
@@ -41,8 +41,8 @@ namespace Kontakter.Controllers
         public async Task<ActionResult<Contact>> AddContact(Contact contact)
         {
             // To do: check that user is authenticated and can add contact with given UID
-            kontakterContext.Add(contact);
-            await kontakterContext.SaveChangesAsync();
+            KontakterContext.Add(contact);
+            await KontakterContext.SaveChangesAsync();
             logger.LogInformation($"Added new contact {contact.ID}");
             return CreatedAtAction(nameof(GetContact), new { id = contact.ID }, contact);
         }
@@ -52,10 +52,10 @@ namespace Kontakter.Controllers
         {
             // To do: check that user is authenticated and can update contact with given UID
             logger.LogInformation($"Updating contact {contact.ID}");
-            kontakterContext.Entry(contact).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            KontakterContext.Entry(contact).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             try
             {
-                await kontakterContext.SaveChangesAsync();
+                await KontakterContext.SaveChangesAsync();
             }
             catch
             {
@@ -77,20 +77,20 @@ namespace Kontakter.Controllers
         public async Task<ActionResult> DeleteContact(int id) {
             // To do: check that user is authenticated and can delete contact with given UID
             logger.LogWarning($"Deleting contact {id}");
-            var contact = await kontakterContext.Contacts.FindAsync(id);
+            var contact = await KontakterContext.Contacts.FindAsync(id);
             if (contact == null) {
                 logger.LogError($"Deleting contact {id} failed: no such contact found");
                 return NotFound();
             }
-            kontakterContext.Remove(contact);
-            await kontakterContext.SaveChangesAsync();
+            KontakterContext.Remove(contact);
+            await KontakterContext.SaveChangesAsync();
             logger.LogInformation($"Contact {id} has been deleted");
             return NoContent();
         }
 
         private bool ContactExists(int id)
         {
-            return kontakterContext.Contacts.Any(e => e.ID == id);
+            return KontakterContext.Contacts.Any(e => e.ID == id);
         }
     }
 }

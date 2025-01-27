@@ -7,8 +7,8 @@ function Content({ title }) {
     return (
         <div className="content">
             <Routes title={title}>
-                <Route path="/" element={<Navigate to="/kontakter" />} />
-                <Route path="/kontakter" element={<Contacts />} />
+                <Route path="/" element={<Navigate to="/Kontakter" />} />
+                <Route path="/Kontakter" element={<Contacts />} />
                 <Route path="/registrer" element={<SignUp />} />
                 <Route path="/logginn" element={<LogIn/>} />
             </Routes>

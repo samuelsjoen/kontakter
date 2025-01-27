@@ -7,7 +7,7 @@ function searchBar() {
                 id="outlined-basic"
                 variant="outlined"
                 fullWidth
-                label="Søk i kontakter"
+                label="Søk i Kontakter"
             />
         </div>
     )

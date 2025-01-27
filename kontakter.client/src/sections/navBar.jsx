@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-ro
 function NavBar({ title }) {
     return (
         <div className="navBar">
-            <Banner title={title} link="/kontakter" />
+            <Banner title={title} link="/Kontakter" />
             <div className="buttons">
                 <NavBarButton title="Registrer" link="/registrer"/>
                 <NavBarButton title="Logg inn" link="/logginn"/>

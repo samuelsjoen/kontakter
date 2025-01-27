@@ -4,10 +4,10 @@ The following tools were used to generate this project:
 - create-vite
 
 The following steps were used to generate this project:
-- Create react project with create-vite: `npm init --yes vite@latest kontakter.client -- --template=react`.
+- Create react project with create-vite: `npm init --yes vite@latest Kontakter.client -- --template=react`.
 - Update `vite.config.js` to set up proxying and certs.
 - Update `App` component to fetch and display weather information.
-- Create project file (`kontakter.client.esproj`).
+- Create project file (`Kontakter.client.esproj`).
 - Create `launch.json` to enable debugging.
 - Add project to solution.
 - Update proxy endpoint to be the backend server endpoint.
