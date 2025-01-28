@@ -39,10 +39,9 @@ function Contacts() {
             }
             const contactsReceived = await response.json();
             console.log('Contacts fetched', contactsReceived);
-            // contacts = contacts.sort((a, b) => a.name.localCompare(b.name));
-            if (contacts != contactsReceived) {
-                setContacts(contactsReceived);
-            }
+            const sortedContacts = contactsReceived.sort((a, b) => a.name.localeCompare(b.name));
+            console.log(sortedContacts);
+            setContacts(sortedContacts);
         } catch (e) {
             console.error('Error:', e);
         } finally {
