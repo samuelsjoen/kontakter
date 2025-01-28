@@ -9,6 +9,11 @@ function signUpForm() {
     });
 
     const handleSubmit = (e) => {
+        if (formData.password != formData.repeatPassword) {
+            alert("Passwords do not match!")
+        } else {
+            
+        }
         e.preventDefault();
         // TO DO: send data to server
     };
@@ -51,7 +56,7 @@ function signUpForm() {
                 onChange={handleChange}
                 required
             />
-            <button type="submit">Registrer</button>
+            <button onClick={handleSubmit}>Registrer</button>
         </form>
     )
 }

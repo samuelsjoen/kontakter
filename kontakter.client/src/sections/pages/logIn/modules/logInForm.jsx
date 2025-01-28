@@ -12,6 +12,7 @@ function logInForm() {
         // TO DO: send data to server
     };
 
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
@@ -41,7 +42,7 @@ function logInForm() {
                 required
             />
 
-            <button type="submit">Logg inn</button>
+            <button onClick={handleSubmit}>Logg inn</button>
         </form>
     )
 }

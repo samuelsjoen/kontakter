@@ -1,6 +1,12 @@
 import TextField from "@mui/material/TextField";
+import { useEffect, useState } from "react";
 
-function searchBar() {
+function searchBar({ filter, setFilter }) {
+    
+    const handleChange = (event) => {
+        setFilter(event.target.value);
+    };
+
     return (
         <div className="search">
             <TextField
@@ -8,6 +14,8 @@ function searchBar() {
                 variant="outlined"
                 fullWidth
                 label="Søk i Kontakter"
+                value={filter}
+                onChange={handleChange}
             />
         </div>
     )
