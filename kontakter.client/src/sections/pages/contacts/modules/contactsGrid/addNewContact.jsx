@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import ContactForm from './contactForm'
 
-function addNewContact() {
+function addNewContact({ onChange }) {
 
     const [addNewOpened, setAddNewOpen] = useState(false);
 
@@ -35,6 +35,9 @@ function addNewContact() {
                             number={null}
                             address={null}
                             id={null}
+                            uid={1}
+                            handleClose={handleAddClose}
+                            handleUpdate={onChange}
                         />
                     </div>
                 </Box>

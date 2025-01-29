@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import ContactForm from './contactForm'
 
-function ContactCard({ name, number, address }) {
+function ContactCard({ name, number, address, id, uid, onChange }) {
 
     const [updateOpened, setUpdateOpen] = useState(false);
 
@@ -13,6 +13,30 @@ function ContactCard({ name, number, address }) {
 
     function handleUpdateClose() {
         setUpdateOpen(false);
+    }
+
+    function confirmRemove() {
+        if (window.confirm(`Er du sikker på at du vil fjerne denne kontakten?`)) {
+            remove();
+        }
+    }
+    
+    async function remove() {
+        try {
+            const response = await fetch(`https://localhost:7213/Contact?id=${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            if (!response.ok) {
+                throw new Error(`Failed to delete contact with ID ${id}`);
+            }
+        } catch (e) {
+            alert("Noe gikk galt ved sletting av kontakten")
+            console.log('Error:', e);
+        }
+        onChange(1);
     }
 
     return (
@@ -32,9 +56,13 @@ function ContactCard({ name, number, address }) {
                     <div className="addOrUpdateBox">
                         <h3>Oppdater kontakt</h3>
                         <ContactForm
+                            id={id}
+                            uid={uid}
                             name={name}
                             number={number}
                             address={address}
+                            handleClose={handleUpdateClose}
+                            handleUpdate={onChange}
                         />
                     </div>
                 </Box>
@@ -43,15 +71,7 @@ function ContactCard({ name, number, address }) {
     )
 }
 
-function confirmRemove() {
-    if (window.confirm(`Er du sikker på at du vil fjerne denne kontakten?`)) {
-        remove();
-    }
-}
 
-function remove() {
-    // TO DO: Ask API to remove contact
-}
 
 const updateStyle = {
     position: 'absolute',

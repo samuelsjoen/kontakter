@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700'); /* Import Garamond from Google Fonts */
 
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 .website {
   font-family: "Rubik", serif;
   color: rgb(108, 108, 108);
@@ -7,7 +13,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 98vw;
+  width: 100vw;
 }
 
 .navBar {
@@ -18,9 +24,9 @@
   gap: 20px;
   padding: 10px;
   top: 0;
-  background-color: rgb(113, 135, 78);
+  background-color: rgb(78, 90, 135);
   text-align: center;
-  width: 100%;
+  width:100%;
   margin-bottom: 20px;
   position: static;
 }
@@ -54,15 +60,6 @@
   color:#333;
 }
 
-.content .logIn, .content .signUp {
-  height: 74vh;
-}
-
-@media (max-width: 767px) {
-  .content .logIn, .content .signUp {
-    height: 81vh;
-  }
-}
 
 .logInForm, .signUpForm {
   display: flex;
@@ -80,12 +77,61 @@
 .contacts {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items:flex-start;
+  justify-content:flex-start;
+  width: 55vw;
+  min-height: 78vh;
 }
 
+.contactList {
+  display: flex;
+  align-items: flex-start;
+}
+
+.contactCard, .addNewContact {
+  width: 15vw;
+  height: 20vh;
+}
+
+@media (max-width: 1500px) {
+  .contacts {
+    width: 70vw;
+  }
+
+  .contactCard, .addNewContact {
+    width: 20vw;
+    height: 25vh;
+  }
+  
+}
+
+@media (max-width: 1025px) {
+  .contacts {
+    width: 80vw;
+  }
+
+  .contactCard, .addNewContact {
+    width: 35vw;
+    height: 20vh;
+  }
+
+}
+
+@media (max-width: 767px) {
+  .contacts {
+    width: 85vw;
+  }
+
+  .contactCard, .addNewContact {
+    width: 70vw;
+    height: 20vh;
+  }
+  
+}
+
+
 .contacts .search {
-  width: 95%;
+  width: 100%;
 }
 
 .contacts .contactList {
@@ -96,9 +142,15 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
+@media (max-width: 1025px) {
+  .contacts .contactList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 767px) {
   .contacts .contactList {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
@@ -108,7 +160,7 @@
   font-size: x-large;
   cursor: pointer;
   color: #ffffff;
-  background-color: rgb(113, 135, 78);
+  background-color: rgb(78, 90, 135);
 }
 
 .contactCard, .addNewContact {
@@ -134,7 +186,7 @@
 }
 
 .newContact:hover {
-  background-color: rgb(101, 134, 47);
+  background-color: rgb(67, 77, 114);
   font-size: xx-large;
 }
 

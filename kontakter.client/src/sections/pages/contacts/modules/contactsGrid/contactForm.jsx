@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function addNewForm({ name, number, address, id }) {
+function contactForm({ name, number, address, id, uid, handleClose, handleUpdate }) {
 
     const [formData, setFormData] = useState({
         name: name,
@@ -10,8 +10,73 @@ function addNewForm({ name, number, address, id }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // TO DO: send data to server
+        if (id) {
+            updateContact();
+        } else {
+            createContact();
+        }
+        handleClose();
     };
+
+    async function updateContact() {
+        try {
+
+            const requestBody = {
+                ID: id,
+                UID: uid,
+                Name: formData.name,
+                PhoneNumber: formData.phone,
+                Address: formData.address
+            };
+
+            const response = await fetch(`https://localhost:7213/Contact?id=${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to update contact with ID ${id}`);
+            }
+            console.log("Contact updated successfully")
+            handleUpdate(1)
+            
+        } catch (e) {
+            alert("Noe gikk galt ved oppdatering av kontakt")
+            console.error(e);
+        }
+    }
+
+    async function createContact() {
+        try {
+            const requestBody = {
+                UID: uid,
+                Name: formData.name,
+                PhoneNumber: formData.phone,
+                Address: formData.address
+            };
+
+            const response = await fetch(`https://localhost:7213/Contact`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to create new contact`);
+            }
+            console.log("Contact created successfully")
+            handleUpdate(1)
+            
+        } catch (e) {
+            alert("Noe gikk galt ved lagring av kontakt")
+            console.error(e);
+        }
+    }
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -52,9 +117,9 @@ function addNewForm({ name, number, address, id }) {
                 onChange={handleChange}
             />
 
-            <button type="submit">Lagre</button>
+            <button onClick={handleSubmit}>{id ? 'Oppdater' : 'Lagre'}</button>
         </form>
     );
 }
 
-export default addNewForm;
+export default contactForm;
