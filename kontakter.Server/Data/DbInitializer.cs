@@ -12,12 +12,6 @@ namespace Kontakter.Server.Data
                 return;
             }
 
-            var users = new User[]
-            {
-                new User{Username="Test", Password="hallo"}
-            };
-
-            context.Users.AddRange(users);
             context.SaveChanges();
 
             var contacts = new Contact[]

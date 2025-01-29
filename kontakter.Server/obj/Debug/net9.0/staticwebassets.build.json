@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "KHIxp5fWcbGZIujk30prOe4BsMIihyiPF77ygxx6sC0=",
-  "Source": "Kontakter.Server",
-  "BasePath": "_content/Kontakter.Server",
+  "Hash": "0lyCGACXLfrNCa+NrvHYiqsa6/bt+CW96wKSjduYrlA=",
+  "Source": "kontakter.Server",
+  "BasePath": "_content/kontakter.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
@@ -12,10 +12,10 @@
       "Source": "Kontakter.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
       "AdditionalPublishProperties": "",
-      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;Configuration;Platform;TargetFramework;RuntimeIdentifier;SelfContained",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
       "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
       "AdditionalBuildProperties": "",
-      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;Configuration;Platform;TargetFramework;RuntimeIdentifier;SelfContained"
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
     }
   ],
   "DiscoveryPatterns": [],

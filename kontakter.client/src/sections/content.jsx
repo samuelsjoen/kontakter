@@ -7,7 +7,7 @@ function Content({ title }) {
     return (
         <div className="content">
             <Routes title={title}>
-                <Route path="/" element={<Navigate to="/Kontakter" />} />
+                <Route path="/" element={<Navigate to="/logginn" />} />
                 <Route path="/Kontakter" element={<Contacts />} />
                 <Route path="/registrer" element={<SignUp />} />
                 <Route path="/logginn" element={<LogIn/>} />

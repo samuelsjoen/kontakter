@@ -1,3 +1,3 @@
 ﻿<Project>
-  <Import Project="..\buildMultiTargeting\Kontakter.Server.props" />
+  <Import Project="..\buildMultiTargeting\kontakter.Server.props" />
 </Project>

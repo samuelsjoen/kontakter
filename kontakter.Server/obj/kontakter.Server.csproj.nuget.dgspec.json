@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\Kontakter.Server.csproj": {}
+    "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\kontakter.Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\Kontakter.Server.csproj": {
+    "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\kontakter.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\Kontakter.Server.csproj",
-        "projectName": "Kontakter.Server",
-        "projectPath": "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\Kontakter.Server.csproj",
+        "projectUniqueName": "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\kontakter.Server.csproj",
+        "projectName": "kontakter.Server",
+        "projectPath": "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\kontakter.Server.csproj",
         "packagesPath": "C:\\Users\\samue\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\obj\\",
         "projectStyle": "PackageReference",
@@ -51,6 +51,14 @@
           "targetAlias": "net9.0",
           "dependencies": {
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.1, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.1, )"
             },

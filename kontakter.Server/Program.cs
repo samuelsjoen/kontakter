@@ -1,19 +1,20 @@
 using Microsoft.EntityFrameworkCore;
 using Kontakter.Server.Data;
+using Microsoft.AspNetCore.Identity;
+using Kontakter.Server.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddAuthorization();
+builder.Services.AddIdentityApiEndpoints<IdentityUser>()
+    .AddEntityFrameworkStores<KontakterContext>();
+
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-
 builder.Services.AddDbContext<KontakterContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("KontakterContextSQLite")));
-
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
@@ -26,9 +27,10 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+app.MapIdentityApi<IdentityUser>();
+
 app.UseDefaultFiles();
 app.MapStaticAssets();
-
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
@@ -54,7 +56,6 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
-
 app.UseHttpsRedirection();
 
 // app.UseAuthorization();
