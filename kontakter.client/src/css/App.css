@@ -4,6 +4,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  width: 100%;
 }
 
 .website {
@@ -11,9 +12,14 @@ body {
   color: rgb(108, 108, 108);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content:start;
   flex-direction: column;
   width: 100vw;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-image: url('../media/babylonn.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .navBar {
@@ -26,7 +32,7 @@ body {
   top: 0;
   background-color: rgb(78, 90, 135);
   text-align: center;
-  width:100%;
+  width:100vw;
   margin-bottom: 20px;
   position: static;
 }
@@ -60,6 +66,27 @@ body {
   color:#333;
 }
 
+.content {
+  background-color: rgba(255, 255, 255, 0.8); /* Adjust the alpha value (0.8) as needed */
+  padding: 3%;
+  border-radius: 17px;
+  min-height: 65vh;
+  min-width: 20vw;
+}
+
+@media (max-width: 1025px) {
+  .content {
+    border-radius: 15px;
+    padding: 20px;
+  }
+}
+
+.logIn, .signUp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 
 .logInForm, .signUpForm {
   display: flex;
@@ -67,10 +94,13 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  width: 90%;
 }
 
 .logInForm button, .signUpForm button {
   margin-top: 20px;
+  background-color: rgb(78, 90, 135);
+  color:#ffffff
 }
 
 
@@ -80,7 +110,6 @@ body {
   align-items:flex-start;
   justify-content:flex-start;
   width: 55vw;
-  min-height: 78vh;
 }
 
 .contactList {
@@ -119,16 +148,15 @@ body {
 
 @media (max-width: 767px) {
   .contacts {
-    width: 85vw;
+    width: 80vw;
   }
 
   .contactCard, .addNewContact {
-    width: 70vw;
+    width: 65vw;
     height: 20vh;
   }
   
 }
-
 
 .contacts .search {
   width: 100%;
@@ -169,9 +197,9 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  border-width: thin;
+  /* border-width: thin;
   border-style: solid;
-  border-color: #ffffff;
+  border-color: #ffffff; */
   border-radius: 10px;
   padding: 10px;
   transition: border-style 0.1s ease;
@@ -245,7 +273,7 @@ input {
 
 .contactForm button {
   margin-top: 20px;
-  background-color: rgb(113, 135, 78);
+  background-color: rgb(78, 90, 135);
   color: #ffffff;
   width: 95%;
 }
