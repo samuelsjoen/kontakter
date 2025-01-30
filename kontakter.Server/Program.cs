@@ -17,7 +17,6 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LogoutPath = "/api/auth/logout";
     options.AccessDeniedPath = "/api/auth/forbidden";
 });
-
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddDbContext<KontakterContext>(options =>
@@ -37,7 +36,6 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 app.MapIdentityApi<IdentityUser>();
-
 app.UseDefaultFiles();
 app.MapStaticAssets();
 if (!app.Environment.IsDevelopment())
@@ -50,30 +48,22 @@ else
     app.UseDeveloperExceptionPage();
     app.UseMigrationsEndPoint();
 }
-
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-
     var context = services.GetRequiredService<KontakterContext>();
     context.Database.EnsureCreated();
-    DbInitializer.Initialize(context);
+    // DbInitializer.Initialize(context);
 }
-
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
 app.UseHttpsRedirection();
-
-// app.UseAuthorization();
 app.UseCors("AllowFrontend");
-
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
-
 app.MapFallbackToFile("/index.html");
 
 app.Run();

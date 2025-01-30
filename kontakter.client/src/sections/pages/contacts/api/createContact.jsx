@@ -1,16 +1,15 @@
 async function createContact(formData, onChange) {
     try {
-        const requestBody = {
-            Name: formData.name,
-            PhoneNumber: formData.phone,
-            Address: formData.address
-        };
         const response = await fetch(`https://localhost:7213/Contact`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(requestBody),
+            body: JSON.stringify({
+                Name: formData.name,
+                PhoneNumber: formData.phone,
+                Address: formData.address
+            }),
             credentials: "include",
         });
 

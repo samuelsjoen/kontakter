@@ -1,20 +1,17 @@
 async function updateContact( id, uid, formData, onChange ) {
     try {
-
-        const requestBody = {
-            ID: id,
-            UID: uid,
-            Name: formData.name,
-            PhoneNumber: formData.phone,
-            Address: formData.address
-        };
-
         const response = await fetch(`https://localhost:7213/Contact?id=${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(requestBody),
+            body: JSON.stringify({
+                ID: id,
+                UID: uid,
+                Name: formData.name,
+                PhoneNumber: formData.phone,
+                Address: formData.address
+            }),
             credentials: "include",
         });
 
@@ -25,7 +22,7 @@ async function updateContact( id, uid, formData, onChange ) {
         onChange()
 
     } catch (e) {
-        alert("Noe gikk galt ved oppdatering av kontakt")
+        alert("Noe gikk galt ved endring av kontakt")
         console.error(e);
     }
 }

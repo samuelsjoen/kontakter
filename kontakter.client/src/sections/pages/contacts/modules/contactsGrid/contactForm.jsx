@@ -14,7 +14,7 @@ function contactForm({ name, number, address, id, uid, handleClose, onChange }) 
         if (id) {
             updateContact(id, uid, formData, onChange);
         } else {
-            createContact(formData, onChange); // Update the function call to match the new parameter structure
+            createContact(formData, onChange);
         }
         handleClose();
     };

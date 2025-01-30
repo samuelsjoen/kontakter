@@ -32,7 +32,7 @@ function signUpForm() {
             if (!response.ok) {
                 throw new Error("Signup failed")
             }
-            alert("Suksess! Du vil nå bli redirigert for å logge inn")
+            alert("Bruker ooprrettet. Du vil nå bli redigert for å logge inn")
             navigate("/logginn")
         } catch (e) {
             alert("Noe gikk galt ved registrering")
@@ -53,7 +53,7 @@ function signUpForm() {
         }
 
         if (formData.password !== formData.repeatPassword) {
-            alertText += "Passord matcher ikke\n";
+            alertText += "Passordene matcher ikke\n";
         }
 
         if (!/[!@#$%^&*(),.?":{}|<>]/.test(formData.password)) {
