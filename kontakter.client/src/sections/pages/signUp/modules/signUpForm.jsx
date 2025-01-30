@@ -1,21 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function signUpForm() {
 
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
-        username: '',
-        password: '',
-        repeatPassword: '',
+        email: "",
+        password: "",
+        repeatPassword: "",
     });
 
-    const handleSubmit = (e) => {
-        if (formData.password != formData.repeatPassword) {
-            alert("Passwords do not match!")
-        } else {
-            
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        if (!checkConditions()) {
+            throw new Error("Password does not meet conditions");
         }
-        e.preventDefault();
-        // TO DO: send data to server
+
+        try {
+            const response = await fetch(`https://localhost:7213/register`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: formData.email,
+                    password: formData.password,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error("Signup failed")
+            }
+            alert("Bruker ooprrettet. Du vil nå bli redigert for å logge inn")
+            navigate("/logginn")
+        } catch (e) {
+            alert("Noe gikk galt ved registrering")
+            console.log("Error", e);
+        }
     };
 
     const handleChange = (e) => {
@@ -23,15 +45,54 @@ function signUpForm() {
         setFormData({ ...formData, [name]: value });
     };
 
-    return (
-        <form className="signUpForm">
+    function checkConditions() {
+        let alertText = "";
 
-            <label htmlFor="username">Brukernavn: </label>
+        if (!formData.email.includes("@") || !formData.email.includes(".")) {
+            alertText += "Ukorrekt e-mail format\n";
+        }
+
+        if (formData.password !== formData.repeatPassword) {
+            alertText += "Passordene matcher ikke\n";
+        }
+
+        if (!/[!@#$%^&*(),.?":{}|<>]/.test(formData.password)) {
+            alertText += "Passord må inneholde minst ett spesialtegn\n";
+        }
+
+        if (!/[A-Z]/.test(formData.password)) {
+            alertText += "Passord må inneholde minst en stor bokstav\n";
+        }
+
+        if (!/[a-z]/.test(formData.password)) {
+            alertText += "Passord må inneholde minst en liten bokstav\n";
+        }
+
+        if (!/[0-9]/.test(formData.password)) {
+            alertText += "Passord må inneholde minst ett nummer\n";
+        }
+
+        if (formData.password.length < 6) {
+            alertText += "Passord må være minst 6 tegn langt\n";
+        }
+
+        if (alertText) {
+            alert(alertText);
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    return (
+        <form className="signUpForm" onSubmit={handleSubmit}>
+
+            <label htmlFor="email">E-mail: </label>
             <input
                 type="text"
-                id="username"
-                name="username"
-                value={formData.username}
+                id="email"
+                name="email"
+                value={formData.email}
                 onChange={handleChange}
                 required
             />
@@ -39,7 +100,7 @@ function signUpForm() {
 
             <label htmlFor="password">Passord: </label>
             <input
-                type="text"
+                type="password"
                 id="password"
                 name="password"
                 value={formData.password}
@@ -49,14 +110,14 @@ function signUpForm() {
 
             <label htmlFor="repeatPassword">Gjenta passord: </label>
             <input
-                type="text"
+                type="password"
                 id="repeatPassword"
                 name="repeatPassword"
                 value={formData.repeatPassword}
                 onChange={handleChange}
                 required
             />
-            <button onClick={handleSubmit}>Registrer</button>
+            <button type="submit">Registrer</button>
         </form>
     )
 }

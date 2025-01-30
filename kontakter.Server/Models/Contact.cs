@@ -8,7 +8,7 @@ namespace Kontakter.Server.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
-        public required int UID { get; set; }
+        public required string UID { get; set; }
         public required string Name { get; set; }
         public required string PhoneNumber { get; set; }
         public string? Address { get; set; }

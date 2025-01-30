@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { createContact } from "../../api/createContact";
+import { updateContact } from "../../api/updateContact";
 
-function contactForm({ name, number, address, id, uid, handleClose, handleUpdate }) {
-
+function contactForm({ name, number, address, id, uid, handleClose, onChange }) {
     const [formData, setFormData] = useState({
         name: name,
         phone: number,
@@ -11,82 +12,20 @@ function contactForm({ name, number, address, id, uid, handleClose, handleUpdate
     const handleSubmit = (e) => {
         e.preventDefault();
         if (id) {
-            updateContact();
+            updateContact(id, uid, formData, onChange);
         } else {
-            createContact();
+            createContact(formData, onChange);
         }
         handleClose();
     };
-
-    async function updateContact() {
-        try {
-
-            const requestBody = {
-                ID: id,
-                UID: uid,
-                Name: formData.name,
-                PhoneNumber: formData.phone,
-                Address: formData.address
-            };
-
-            const response = await fetch(`https://localhost:7213/Contact?id=${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(requestBody)
-            });
-
-            if (!response.ok) {
-                throw new Error(`Failed to update contact with ID ${id}`);
-            }
-            console.log("Contact updated successfully")
-            handleUpdate(1)
-            
-        } catch (e) {
-            alert("Noe gikk galt ved oppdatering av kontakt")
-            console.error(e);
-        }
-    }
-
-    async function createContact() {
-        try {
-            const requestBody = {
-                UID: uid,
-                Name: formData.name,
-                PhoneNumber: formData.phone,
-                Address: formData.address
-            };
-
-            const response = await fetch(`https://localhost:7213/Contact`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(requestBody)
-            });
-
-            if (!response.ok) {
-                throw new Error(`Failed to create new contact`);
-            }
-            console.log("Contact created successfully")
-            handleUpdate(1)
-            
-        } catch (e) {
-            alert("Noe gikk galt ved lagring av kontakt")
-            console.error(e);
-        }
-    }
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-
     return (
         <form className="contactForm">
-
             <label htmlFor="name">Navn: </label>
             <input
                 type="text"
@@ -96,7 +35,6 @@ function contactForm({ name, number, address, id, uid, handleClose, handleUpdate
                 onChange={handleChange}
                 required
             />
-
 
             <label htmlFor="phone">Telefon: </label>
             <input
@@ -117,7 +55,7 @@ function contactForm({ name, number, address, id, uid, handleClose, handleUpdate
                 onChange={handleChange}
             />
 
-            <button onClick={handleSubmit}>{id ? 'Oppdater' : 'Lagre'}</button>
+            <button onClick={handleSubmit}>{id ? "Oppdater" : "Lagre"}</button>
         </form>
     );
 }

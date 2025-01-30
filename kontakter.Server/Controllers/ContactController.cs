@@ -1,5 +1,6 @@
 using Kontakter.Server.Data;
 using Kontakter.Server.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,37 +11,58 @@ namespace Kontakter.Controllers
     public class ContactController(KontakterContext KontakterContext, ILogger<ContactController> logger) : ControllerBase
     {
         [HttpGet(Name = "GetContacts")]
-        public async Task<ActionResult<IEnumerable<Contact>>> GetContacts(int UID)
+        public async Task<ActionResult<IEnumerable<Contact>>> GetContacts()
         {
-            // To do: check that user is authenticated and UID belongs to them
+            var UID = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            if (UID == null)
+            {
+                logger.LogError("User ID not found");
+                return Unauthorized();
+            }
             logger.LogInformation($"Fetching contacts for {UID}");
             var contacts = await KontakterContext.Contacts.Where(contact => contact.UID == UID).ToListAsync();
             logger.LogInformation($"Contacts fetched for {UID}");
             return contacts;
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Contact>> GetContact(int id)
-        {
-            logger.LogInformation($"Fetching contact {id}");
-            var contact = await KontakterContext.Contacts.FindAsync(id);
+        // [HttpGet("{id}")]
+        // public async Task<ActionResult<Contact>> GetContact(int id)
+        // {
+        //     var UID = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+        //     logger.LogInformation($"Fetching contact {id}");
+        //     var contact = await KontakterContext.Contacts.FindAsync(id);
 
-            // To do: check that user is authenticated and can access contact information
-
-            if (contact == null)
-            {
-                logger.LogError($"Fetch failed: contact {id} not found");
-                return NotFound();
-            }
-            logger.LogInformation($"Contact {id} fetched");
-
-            return contact;
-        }
+        //     if (contact == null)
+        //     {
+        //         logger.LogError($"Fetch failed: contact {id} not found");
+        //         return NotFound();
+        //     }
+        //     if (contact.UID != UID)
+        //     {
+        //         logger.LogWarning($"User {UID} attempted to fetch contact {contact.UID} which does not belong to them");
+        //         return NotFound();
+        //     }
+        //     logger.LogInformation($"Contact {id} fetched");
+        //     return contact;
+        // }
 
         [HttpPost]
-        public async Task<ActionResult> AddContact(Contact contact)
+        public async Task<ActionResult> AddContact(CreateContactDto contactDto)
         {
-            // To do: check that user is authenticated and can add contact with given UID
+            logger.LogInformation("User sent create contact request");
+            var UID = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            if (UID == null)
+            {
+                logger.LogError("User ID not found");
+                return Unauthorized();
+            }
+            var contact = new Contact
+            {
+                Name = contactDto.Name,
+                PhoneNumber = contactDto.PhoneNumber,
+                Address = contactDto.Address,
+                UID = UID
+            };
             KontakterContext.Add(contact);
             await KontakterContext.SaveChangesAsync();
             logger.LogInformation($"Added new contact {contact.ID}");
@@ -49,12 +71,17 @@ namespace Kontakter.Controllers
         [HttpPut]
         public async Task<ActionResult> UpdateContact(Contact contact)
         {
-            // To do: check that user is authenticated and can update contact with given UID
+            var UID = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
             logger.LogInformation($"Updating contact {contact.ID}");
             if (!ContactExists(contact.ID))
             {
                 logger.LogError($"Cannot update contact {contact.ID}: contact does not exist");
                 return NotFound();
+            }
+            if (contact.UID != UID)
+            {
+                logger.LogWarning($"User {UID} attempted to update contact {contact.UID} which does not belong to them");
+                return Unauthorized();
             }
             KontakterContext.Entry(contact).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             try
@@ -73,13 +100,23 @@ namespace Kontakter.Controllers
         [HttpDelete]
         public async Task<ActionResult> DeleteContact(int id)
         {
-            // To do: check that user is authenticated and can delete contact with given UID
+            var UID = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            if (UID == null)
+            {
+                logger.LogError("User ID not found");
+                return Unauthorized();
+            }
             logger.LogWarning($"Deleting contact {id}");
             var contact = await KontakterContext.Contacts.FindAsync(id);
             if (contact == null)
             {
                 logger.LogError($"Deleting contact {id} failed: no such contact found");
                 return NotFound();
+            }
+            if (contact.UID != UID)
+            {
+                logger.LogWarning($"User {UID} attempted to delete contact {contact.UID} which does not belong to them");
+                return Unauthorized();
             }
             KontakterContext.Remove(contact);
             await KontakterContext.SaveChangesAsync();
@@ -91,5 +128,12 @@ namespace Kontakter.Controllers
         {
             return KontakterContext.Contacts.Any(e => e.ID == id);
         }
+    }
+
+    public class CreateContactDto
+    {
+        public string Name { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Address { get; set; }
     }
 }

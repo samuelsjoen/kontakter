@@ -1,4 +1,4 @@
-import LogInForm from './modules/logInForm';
+import LogInForm from "./modules/logInForm";
 
 function logIn() {
 

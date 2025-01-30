@@ -285,9 +285,10 @@ c:\Users\samue\OneDrive\Documents\Jobb\Kontakter\Kontakter.Server\obj\Debug\net9
 c:\Users\samue\OneDrive\Documents\Jobb\Kontakter\Kontakter.Server\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.Kontakter.Server.props
 c:\Users\samue\OneDrive\Documents\Jobb\Kontakter\Kontakter.Server\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.Kontakter.Server.props
 c:\Users\samue\OneDrive\Documents\Jobb\Kontakter\Kontakter.Server\obj\Debug\net9.0\staticwebassets.pack.json
-c:\Users\samue\OneDrive\Documents\Jobb\Kontakter\Kontakter.Server\obj\Debug\net9.0\Kontakte.6D8C7CC2.Up2Date
 c:\Users\samue\OneDrive\Documents\Jobb\Kontakter\Kontakter.Server\obj\Debug\net9.0\Kontakter.Server.dll
 c:\Users\samue\OneDrive\Documents\Jobb\Kontakter\Kontakter.Server\obj\Debug\net9.0\refint\Kontakter.Server.dll
 c:\Users\samue\OneDrive\Documents\Jobb\Kontakter\Kontakter.Server\obj\Debug\net9.0\Kontakter.Server.pdb
 c:\Users\samue\OneDrive\Documents\Jobb\Kontakter\Kontakter.Server\obj\Debug\net9.0\Kontakter.Server.genruntimeconfig.cache
 c:\Users\samue\OneDrive\Documents\Jobb\Kontakter\Kontakter.Server\obj\Debug\net9.0\ref\Kontakter.Server.dll
+C:\Users\samue\OneDrive\Documents\Jobb\Kontakter\Kontakter.Server\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\samue\OneDrive\Documents\Jobb\Kontakter\Kontakter.Server\obj\Debug\net9.0\Kontakte.6D8C7CC2.Up2Date

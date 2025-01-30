@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 function Contacts() {
     const [contacts, setContacts] = useState([]);
     const [filteredContacts, setFilteredContacts] = useState([]);
-    const [filter, setFilter] = useState('');
+    const [filter, setFilter] = useState("");
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -25,25 +25,26 @@ function Contacts() {
         );
     }
 
-    async function fetchContacts(uid) {
+    async function fetchContacts() {
         try {
             setIsLoading(true);
-            const response = await fetch(`https://localhost:7213/Contact?UID=${uid}`, {
-                method: 'GET',
+            const response = await fetch(`https://localhost:7213/Contact`, {
+                method: "GET",
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 },
+                credentials: "include",
             });
             if (!response.ok) {
-                throw new Error('Failed to fetch contacts');
+                throw new Error("Failed to fetch contacts");
             }
             const contactsReceived = await response.json();
-            console.log('Contacts fetched', contactsReceived);
+            console.log("Contacts fetched", contactsReceived);
             const sortedContacts = contactsReceived.sort((a, b) => a.name.localeCompare(b.name));
             console.log(sortedContacts);
             setContacts(sortedContacts);
         } catch (e) {
-            console.error('Error:', e);
+            console.error("Error:", e);
         } finally {
             setIsLoading(false);
         }

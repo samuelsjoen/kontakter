@@ -1,4 +1,4 @@
-import SignUpForm from './modules/signUpForm';
+import SignUpForm from "./modules/signUpForm";
 
 function signUp() {
 
