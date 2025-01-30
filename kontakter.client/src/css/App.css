@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;700"); /* Import Garamond from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;700");
 
 body {
   margin: 0;
@@ -16,7 +16,7 @@ body {
   flex-direction: column;
   width: 100vw;
   min-height: 100vh;
-  margin: 0 auto;
+  margin: 0;
   background-image: url("../media/babylonn.jpg");
   background-size: cover;
   background-position: center;
@@ -28,12 +28,14 @@ body {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   top: 0;
   background-color: rgb(78, 90, 135);
   text-align: center;
-  width:100vw;
-  margin-bottom: 20px;
+  width:100%;
+  margin:0;
+  margin-bottom: clamp(20px, 30px, 40px);
   position: static;
 }
 
@@ -86,6 +88,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  width: 20vw;
 }
 
 .logInForm, .signUpForm {
@@ -125,6 +128,10 @@ body {
 }
 
 @media (max-width: 1500px) {
+  .signUp, .logIn {
+    width: 25vw
+  }
+
   .contacts {
     width: 70vw;
   }
@@ -137,6 +144,10 @@ body {
 }
 
 @media (max-width: 1025px) {
+  .signUp, .logIn {
+    width: 40vw
+  }
+
   .contacts {
     width: 80vw;
   }
@@ -149,13 +160,16 @@ body {
 }
 
 @media (max-width: 767px) {
+  .signUp, .logIn {
+    width: 75vw
+  }
   .contacts {
     width: 80vw;
   }
 
   .contactCard, .addNewContactCard {
     width: 65vw;
-    height: 20vh;
+    height: 15vh;
   }
   
 }
