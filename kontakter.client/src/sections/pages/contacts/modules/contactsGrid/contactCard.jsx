@@ -1,7 +1,8 @@
 import { useState } from "react";
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import ContactForm from './contactForm'
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import ContactForm from "./contactForm";
+import { removeContact } from "../../api/removeContact";
 
 function ContactCard({ name, number, address, id, uid, onChange }) {
 
@@ -17,28 +18,10 @@ function ContactCard({ name, number, address, id, uid, onChange }) {
 
     function confirmRemove() {
         if (window.confirm(`Er du sikker på at du vil fjerne denne kontakten?`)) {
-            remove();
+            removeContact(id, onChange);
         }
     }
     
-    async function remove() {
-        try {
-            const response = await fetch(`https://localhost:7213/Contact?id=${id}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
-            if (!response.ok) {
-                throw new Error(`Failed to delete contact with ID ${id}`);
-            }
-        } catch (e) {
-            alert("Noe gikk galt ved sletting av kontakten")
-            console.log('Error:', e);
-        }
-        onChange(1);
-    }
-
     return (
         <div className="contactCard">
             <div className="name">{name}</div>
@@ -62,7 +45,7 @@ function ContactCard({ name, number, address, id, uid, onChange }) {
                             number={number}
                             address={address}
                             handleClose={handleUpdateClose}
-                            handleUpdate={onChange}
+                            onChange={onChange}
                         />
                     </div>
                 </Box>
@@ -74,12 +57,12 @@ function ContactCard({ name, number, address, id, uid, onChange }) {
 
 
 const updateStyle = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
     width: 400,
-    bgcolor: 'background.paper',
+    bgcolor: "background.paper",
     boxShadow: 24,
     p: 4,
 };

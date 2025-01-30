@@ -1,9 +1,9 @@
 import { useState } from "react";
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import ContactForm from './contactForm'
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import ContactForm from "./contactForm"
 
-function addNewContact({ onChange }) {
+function addNewContactCard({ onChange }) {
 
     const [addNewOpened, setAddNewOpen] = useState(false);
 
@@ -16,7 +16,7 @@ function addNewContact({ onChange }) {
     }
 
     return (
-        <div className="addNewContact">
+        <div className="addNewContactCard">
             <button
                 className="newContact"
                 onClick={handleAddOpen}
@@ -31,13 +31,12 @@ function addNewContact({ onChange }) {
                     <div className="addOrUpdateBox">
                         <h3>Legg til ny kontakt</h3>
                         <ContactForm
-                            name={null}
-                            number={null}
-                            address={null}
-                            id={null}
-                            uid={1}
+                            name={""}
+                            number={""}
+                            address={""}
+                            id={""}
                             handleClose={handleAddClose}
-                            handleUpdate={onChange}
+                            onChange={onChange}
                         />
                     </div>
                 </Box>
@@ -47,15 +46,15 @@ function addNewContact({ onChange }) {
 }
 
 const addNewStyle = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
     width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
+    bgcolor: "background.paper",
+    border: "2px solid #000",
     boxShadow: 24,
     p: 4,
 };
 
-export default addNewContact;
+export default addNewContactCard;

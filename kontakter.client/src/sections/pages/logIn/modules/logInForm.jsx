@@ -1,15 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function logInForm() {
 
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
-        username: '',
-        password: '',
+        email: "",
+        password: "",
     });
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // TO DO: send data to server
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            const response = await fetch("https://localhost:7213/api/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: formData.email,
+                    password: formData.password, 
+                }),
+                credentials: "include",
+            });
+            if (!response.ok) {
+                throw new Error("Login failed")
+            }
+            window.location.href = "/kontakter";
+        } catch (e) {
+            alert("Noe gikk galt ved innlogging");
+            console.log("Error:", e);
+        }
+        
     };
 
 
@@ -19,14 +42,14 @@ function logInForm() {
     };
 
     return (
-        <form className="logInForm">
+        <form className="logInForm" onSubmit={handleSubmit}>
 
-            <label htmlFor="username">Brukernavn: </label>
+            <label htmlFor="email">E-mail: </label>
             <input
                 type="text"
-                id="username"
-                name="username"
-                value={formData.username}
+                id="email"
+                name="email"
+                value={formData.email}
                 onChange={handleChange}
                 required
             />
@@ -34,7 +57,7 @@ function logInForm() {
 
             <label htmlFor="password">Passord: </label>
             <input
-                type="text"
+                type="password"
                 id="password"
                 name="password"
                 value={formData.password}
@@ -42,7 +65,7 @@ function logInForm() {
                 required
             />
 
-            <button onClick={handleSubmit}>Logg inn</button>
+            <button type="submit">Logg inn</button>
         </form>
     )
 }

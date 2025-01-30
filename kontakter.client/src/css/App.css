@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700'); /* Import Garamond from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;700"); /* Import Garamond from Google Fonts */
 
 body {
   margin: 0;
@@ -17,7 +17,7 @@ body {
   width: 100vw;
   min-height: 100vh;
   margin: 0 auto;
-  background-image: url('../media/babylonn.jpg');
+  background-image: url("../media/babylonn.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -95,7 +95,9 @@ body {
   justify-content: center;
   gap: 10px;
   width: 90%;
+  text-align: center;
 }
+
 
 .logInForm button, .signUpForm button {
   margin-top: 20px;
@@ -117,7 +119,7 @@ body {
   align-items: flex-start;
 }
 
-.contactCard, .addNewContact {
+.contactCard, .addNewContactCard {
   width: 15vw;
   height: 20vh;
 }
@@ -127,7 +129,7 @@ body {
     width: 70vw;
   }
 
-  .contactCard, .addNewContact {
+  .contactCard, .addNewContactCard {
     width: 20vw;
     height: 25vh;
   }
@@ -139,7 +141,7 @@ body {
     width: 80vw;
   }
 
-  .contactCard, .addNewContact {
+  .contactCard, .addNewContactCard {
     width: 35vw;
     height: 20vh;
   }
@@ -151,7 +153,7 @@ body {
     width: 80vw;
   }
 
-  .contactCard, .addNewContact {
+  .contactCard, .addNewContactCard {
     width: 65vw;
     height: 20vh;
   }
@@ -191,7 +193,7 @@ body {
   background-color: rgb(78, 90, 135);
 }
 
-.contactCard, .addNewContact {
+.contactCard, .addNewContactCard {
   display: flex;
   flex-direction: column;
   align-items: center;

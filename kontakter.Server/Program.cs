@@ -8,7 +8,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAuthorization();
 builder.Services.AddIdentityApiEndpoints<IdentityUser>()
     .AddEntityFrameworkStores<KontakterContext>();
-
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    options.Cookie.SameSite = SameSiteMode.Strict; // Prevent CSRF
+    options.LoginPath = "/api/auth/login";
+    options.LogoutPath = "/api/auth/logout";
+    options.AccessDeniedPath = "/api/auth/forbidden";
+});
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
@@ -21,7 +29,8 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins("https://localhost:49979")
               .AllowAnyHeader()
-              .AllowAnyMethod();
+              .AllowAnyMethod()
+              .AllowCredentials();
     });
 });
 
@@ -61,6 +70,8 @@ app.UseHttpsRedirection();
 // app.UseAuthorization();
 app.UseCors("AllowFrontend");
 
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 
 app.MapFallbackToFile("/index.html");

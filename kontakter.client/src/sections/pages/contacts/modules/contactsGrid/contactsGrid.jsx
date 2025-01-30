@@ -1,5 +1,5 @@
 import ContactCard from "./contactCard";
-import AddNewContact from "./addNewContact";
+import AddNewContact from "./addNewContactCard";
 
 
 function contactsGrid({ contacts, onChange }) {
@@ -10,9 +10,9 @@ function contactsGrid({ contacts, onChange }) {
             />
             {contacts.map(contact => (
                 <ContactCard
-                    uid={contact.uid}
                     key={contact.id}
-                    id={contact.id} 
+                    id={contact.id}
+                    uid={contact.uid}
                     name={contact.name}
                     number={contact.phoneNumber}
                     address={contact.address}

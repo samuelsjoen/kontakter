@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\kontakter.Server.csproj": {}
+    "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\Kontakter.Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\kontakter.Server.csproj": {
+    "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\Kontakter.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\kontakter.Server.csproj",
-        "projectName": "kontakter.Server",
-        "projectPath": "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\kontakter.Server.csproj",
+        "projectUniqueName": "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\Kontakter.Server.csproj",
+        "projectName": "Kontakter.Server",
+        "projectPath": "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\Kontakter.Server.csproj",
         "packagesPath": "C:\\Users\\samue\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.Server\\obj\\",
         "projectStyle": "PackageReference",
