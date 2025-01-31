@@ -32,7 +32,7 @@ function signUpForm() {
             if (!response.ok) {
                 throw new Error("Signup failed")
             }
-            alert("Bruker ooprrettet. Du vil nå bli redigert for å logge inn")
+            alert("Bruker opprrettet. Du vil nå bli redigert for å logge inn")
             navigate("/logginn")
         } catch (e) {
             alert("Noe gikk galt ved registrering")
