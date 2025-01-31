@@ -1,21 +1,21 @@
 {
   "Version": 1,
-  "Hash": "KHIxp5fWcbGZIujk30prOe4BsMIihyiPF77ygxx6sC0=",
+  "Hash": "Mocccpu62eg9Et3/NMuQwmu9dBOFk01/dpFYNBVNig4=",
   "Source": "Kontakter.Server",
   "BasePath": "_content/Kontakter.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.client\\Kontakter.client.esproj",
+      "Identity": "c:\\Users\\samue\\OneDrive\\Documents\\Jobb\\Kontakter\\Kontakter.client\\Kontakter.client.esproj",
       "Version": 2,
       "Source": "Kontakter.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
       "AdditionalPublishProperties": "",
-      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;Configuration;Platform;TargetFramework;RuntimeIdentifier;SelfContained",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
       "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
       "AdditionalBuildProperties": "",
-      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;Configuration;Platform;TargetFramework;RuntimeIdentifier;SelfContained"
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
     }
   ],
   "DiscoveryPatterns": [],
