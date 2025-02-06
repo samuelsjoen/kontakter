@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace kontakter.Server.Migrations
+namespace Kontakter.Server.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration

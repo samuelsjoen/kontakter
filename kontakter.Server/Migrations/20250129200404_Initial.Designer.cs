@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace kontakter.Server.Migrations
+namespace Kontakter.Server.Migrations
 {
     [DbContext(typeof(KontakterContext))]
     [Migration("20250129200404_Initial")]

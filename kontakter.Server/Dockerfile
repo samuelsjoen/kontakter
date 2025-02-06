@@ -20,7 +20,7 @@ FROM with-node AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["Kontakter.Server/Kontakter.Server.csproj", "Kontakter.Server/"]
-COPY ["Kontakter.client/Kontakter.client.esproj", "Kontakter.client/"]
+COPY ["Kontakter.Client/Kontakter.Client.esproj", "Kontakter.Client/"]
 RUN dotnet restore "./Kontakter.Server/Kontakter.Server.csproj"
 COPY . .
 WORKDIR "/src/Kontakter.Server"

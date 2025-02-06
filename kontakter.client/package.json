@@ -1,5 +1,5 @@
 {
-  "name": "Kontakter.client",
+  "name": "Kontakter.Client",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -14,7 +14,7 @@
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^6.4.1",
     "js-cookie": "^3.0.5",
-    "Kontakter.client": "file:",
+    "Kontakter.Client": "file:",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.1.3"
