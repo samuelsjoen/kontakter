@@ -1,4 +1,4 @@
-async function createContact(formData, onChange) {
+async function createContact(formData, refreshContactGrid) {
     try {
         const response = await fetch(`/Contact`, {
             method: "POST",
@@ -14,16 +14,15 @@ async function createContact(formData, onChange) {
         });
 
         if (!response.ok) {
-            throw new Error(`Failed to create new contact`);
+            const errorData = await response.JSON();
+            throw new Error(`Error when creating new contact: ${errorData.message}`);
         }
         console.log("Contact created successfully");
-        onChange();
+        refreshContactGrid();
 
     } catch (e) {
-        const errorResponse = await e.response.json();
-        console.error("Error response:", errorResponse);
         alert("Noe gikk galt ved lagring av kontakt");
-        console.error(e);
+        console.error("Error response: ", e.message);
     }
 }
 

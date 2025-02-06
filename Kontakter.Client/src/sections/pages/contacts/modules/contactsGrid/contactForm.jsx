@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { createContact } from "../../api/createContact";
 import { updateContact } from "../../api/updateContact";
 
-function contactForm({ name, number, address, id, uid, handleClose, onChange }) {
+function contactForm({ name, number, address, id, uid, handleClose, refreshContactGrid }) {
     const [formData, setFormData] = useState({
         name: name,
         phone: number,
@@ -12,9 +12,9 @@ function contactForm({ name, number, address, id, uid, handleClose, onChange }) 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (id) {
-            updateContact(id, uid, formData, onChange);
+            updateContact(id, uid, formData, refreshContactGrid);
         } else {
-            createContact(formData, onChange);
+            createContact(formData, refreshContactGrid);
         }
         handleClose();
     };
@@ -32,7 +32,7 @@ function contactForm({ name, number, address, id, uid, handleClose, onChange }) 
                 id="name"
                 name="name"
                 value={formData.name}
-                onChange={handleChange}
+                refreshContactGrid={handleChange}
                 required
             />
 
@@ -42,7 +42,7 @@ function contactForm({ name, number, address, id, uid, handleClose, onChange }) 
                 id="phone"
                 name="phone"
                 value={formData.phone}
-                onChange={handleChange}
+                refreshContactGrid={handleChange}
                 required
             />
 
@@ -52,7 +52,7 @@ function contactForm({ name, number, address, id, uid, handleClose, onChange }) 
                 id="address"
                 name="address"
                 value={formData.address}
-                onChange={handleChange}
+                refreshContactGrid={handleChange}
             />
 
             <button onClick={handleSubmit}>{id ? "Oppdater" : "Lagre"}</button>

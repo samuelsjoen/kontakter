@@ -22,12 +22,13 @@ function logInForm() {
                 credentials: "include",
             });
             if (!response.ok) {
-                throw new Error("Login failed")
+                const errorResponse = await response.json();
+                throw new Error(`Error when logging in: ${errorResponse.message}`);
             }
             window.location.href = "/kontakter";
         } catch (e) {
             alert("Noe gikk galt ved innlogging");
-            console.log("Error:", e);
+            console.log("Error response:", e.message);
         }
         
     };
@@ -47,7 +48,7 @@ function logInForm() {
                 id="email"
                 name="email"
                 value={formData.email}
-                onChange={handleChange}
+                refreshContactGrid={handleChange}
                 required
             />
 
@@ -58,7 +59,7 @@ function logInForm() {
                 id="password"
                 name="password"
                 value={formData.password}
-                onChange={handleChange}
+                refreshContactGrid={handleChange}
                 required
             />
 

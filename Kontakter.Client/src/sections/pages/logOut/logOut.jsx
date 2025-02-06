@@ -15,12 +15,13 @@ function logOut() {
                 credentials: "include",
             });
             if (!response.ok) {
-                throw new Error("Logout failed")
+                const errorResponse = await response.json();
+                throw new Error(`Error during logout: ${errorResponse.message}`);
             }
             window.location.href = "/logginn";
         } catch (e) {
             alert("Noe gikk galt ved utlogging")
-            console.log("Error:", e);
+            console.log("Error response:", e.message);
         }
     }
 

@@ -30,13 +30,14 @@ function signUpForm() {
             });
 
             if (!response.ok) {
-                throw new Error("Signup failed")
+                const errorRessponse = await response.json();
+                throw new Error(`Error during signup: ${errorRessponse.message}`);
             }
             alert("Bruker opprrettet. Du vil nå bli redigert for å logge inn")
             navigate("/logginn")
         } catch (e) {
             alert("Noe gikk galt ved registrering")
-            console.log("Error", e);
+            console.log("Error response", e.message);
         }
     };
 
@@ -93,7 +94,7 @@ function signUpForm() {
                 id="email"
                 name="email"
                 value={formData.email}
-                onChange={handleChange}
+                refreshContactGrid={handleChange}
                 required
             />
 
@@ -104,7 +105,7 @@ function signUpForm() {
                 id="password"
                 name="password"
                 value={formData.password}
-                onChange={handleChange}
+                refreshContactGrid={handleChange}
                 required
             />
 
@@ -114,7 +115,7 @@ function signUpForm() {
                 id="repeatPassword"
                 name="repeatPassword"
                 value={formData.repeatPassword}
-                onChange={handleChange}
+                refreshContactGrid={handleChange}
                 required
             />
             <button type="submit">Registrer</button>

@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import ContactForm from "./contactForm"
 
-function addNewContactCard({ onChange }) {
+function addNewContactCard({ refreshContactGrid }) {
 
     const [addNewOpened, setAddNewOpen] = useState(false);
 
@@ -36,7 +36,7 @@ function addNewContactCard({ onChange }) {
                             address={""}
                             id={""}
                             handleClose={handleAddClose}
-                            onChange={onChange}
+                            refreshContactGrid={refreshContactGrid}
                         />
                     </div>
                 </Box>

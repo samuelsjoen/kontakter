@@ -4,7 +4,7 @@ import Modal from "@mui/material/Modal";
 import ContactForm from "./contactForm";
 import { removeContact } from "../../api/removeContact";
 
-function ContactCard({ name, number, address, id, uid, onChange }) {
+function ContactCard({ name, number, address, id, uid, refreshContactGrid }) {
 
     const [updateOpened, setUpdateOpen] = useState(false);
 
@@ -18,7 +18,7 @@ function ContactCard({ name, number, address, id, uid, onChange }) {
 
     function confirmRemove() {
         if (window.confirm(`Er du sikker på at du vil fjerne denne kontakten?`)) {
-            removeContact(id, onChange);
+            removeContact(id, refreshContactGrid);
         }
     }
     
@@ -45,7 +45,7 @@ function ContactCard({ name, number, address, id, uid, onChange }) {
                             number={number}
                             address={address}
                             handleClose={handleUpdateClose}
-                            onChange={onChange}
+                            refreshContactGrid={refreshContactGrid}
                         />
                     </div>
                 </Box>

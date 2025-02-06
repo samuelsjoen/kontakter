@@ -1,4 +1,4 @@
-async function updateContact( id, uid, formData, onChange ) {
+async function updateContact( id, uid, formData, refreshContactGrid ) {
     try {
         const response = await fetch(`/Contact?id=${id}`, {
             method: "PUT",
@@ -16,14 +16,15 @@ async function updateContact( id, uid, formData, onChange ) {
         });
 
         if (!response.ok) {
-            throw new Error(`Failed to update contact with ID ${id}`);
+            const errorResponse = await response.json();
+            throw new Error(`Error when updating contact with ID ${id}: ${errorResponse.message}`);
         }
         console.log("Contact updated successfully")
-        onChange()
+        refreshContactGrid()
 
     } catch (e) {
         alert("Noe gikk galt ved endring av kontakt")
-        console.error(e);
+        console.error("Error Response: ", e.message);
     }
 }
 

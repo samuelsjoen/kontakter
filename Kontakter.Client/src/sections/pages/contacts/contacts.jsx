@@ -36,7 +36,8 @@ function Contacts() {
                 credentials: "include",
             });
             if (!response.ok) {
-                throw new Error("Failed to fetch contacts");
+                const errorResponse = await response.json();
+                throw new Error(`Error when fetching contacts: ${errorResponse.message}`);
             }
             const contactsReceived = await response.json();
             console.log("Contacts fetched", contactsReceived);
@@ -44,7 +45,8 @@ function Contacts() {
             console.log(sortedContacts);
             setContacts(sortedContacts);
         } catch (e) {
-            console.error("Error:", e);
+            alert("There was an error fetching your contacts")
+            console.error("Error response:", e.message);
         } finally {
             setIsLoading(false);
         }
@@ -60,7 +62,7 @@ function Contacts() {
                     />
                     <ContactsGrid
                         contacts={filteredContacts}
-                        onChange={fetchContacts}
+                        refreshContactGrid={fetchContacts}
                     />
                 </>
             ) : (

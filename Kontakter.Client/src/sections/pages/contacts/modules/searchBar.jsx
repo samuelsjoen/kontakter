@@ -15,7 +15,7 @@ function searchBar({ filter, setFilter }) {
                 fullWidth
                 label="Søk i Kontakter"
                 value={filter}
-                onChange={handleChange}
+                refreshContactGrid={handleChange}
             />
         </div>
     )

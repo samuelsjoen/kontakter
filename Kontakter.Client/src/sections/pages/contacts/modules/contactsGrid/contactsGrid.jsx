@@ -2,11 +2,11 @@ import ContactCard from "./contactCard";
 import AddNewContact from "./addNewContactCard";
 
 
-function contactsGrid({ contacts, onChange }) {
+function contactsGrid({ contacts, refreshContactGrid }) {
     return (
         <div className="contactList">
             <AddNewContact
-                onChange={onChange}
+                refreshContactGrid={refreshContactGrid}
             />
             {contacts.map(contact => (
                 <ContactCard
@@ -16,7 +16,7 @@ function contactsGrid({ contacts, onChange }) {
                     name={contact.name}
                     number={contact.phoneNumber}
                     address={contact.address}
-                    onChange={onChange}
+                    refreshContactGrid={refreshContactGrid}
                 />
             ))}
         </div>
