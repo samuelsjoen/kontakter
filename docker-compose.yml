@@ -3,11 +3,3 @@ services:
     build:
       context: .
       dockerfile: ./Kontakter.Server/Dockerfile
-    networks:
-      - web
-      - default
-
-
-networks:
-  web:
-    external: true

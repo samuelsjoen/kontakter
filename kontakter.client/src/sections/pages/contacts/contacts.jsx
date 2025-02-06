@@ -28,7 +28,7 @@ function Contacts() {
     async function fetchContacts() {
         try {
             setIsLoading(true);
-            const response = await fetch(`https://localhost:7213/Contact`, {
+            const response = await fetch(`/Contact`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

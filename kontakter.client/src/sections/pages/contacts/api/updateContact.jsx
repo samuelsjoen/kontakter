@@ -1,6 +1,6 @@
 async function updateContact( id, uid, formData, onChange ) {
     try {
-        const response = await fetch(`https://localhost:7213/Contact?id=${id}`, {
+        const response = await fetch(`/Contact?id=${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

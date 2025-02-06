@@ -18,7 +18,7 @@ function signUpForm() {
         }
 
         try {
-            const response = await fetch(`https://localhost:7213/register`, {
+            const response = await fetch(`/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

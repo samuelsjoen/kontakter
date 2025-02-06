@@ -1,6 +1,6 @@
 async function createContact(formData, onChange) {
     try {
-        const response = await fetch(`https://localhost:7213/Contact`, {
+        const response = await fetch(`/Contact`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

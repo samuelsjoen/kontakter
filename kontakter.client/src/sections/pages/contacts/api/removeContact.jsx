@@ -1,6 +1,6 @@
 async function removeContact( id, onChange ) {
     try {
-        const response = await fetch(`https://localhost:7213/Contact?id=${id}`, {
+        const response = await fetch(`/Contact?id=${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

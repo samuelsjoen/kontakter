@@ -37,7 +37,8 @@ var app = builder.Build();
 
 app.MapIdentityApi<IdentityUser>();
 app.UseDefaultFiles();
-app.MapStaticAssets();
+app.UseStaticFiles();
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
