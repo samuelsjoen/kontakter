@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 
+/**
+ * A component containing a form for providing login details
+ * @returns The login form
+ */
 function logInForm() {
 
     const [formData, setFormData] = useState({

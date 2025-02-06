@@ -2,6 +2,10 @@ import SearchBar from "./modules/searchBar"
 import ContactsGrid from "./modules/contactsGrid/contactsGrid";
 import { useEffect, useState } from "react";
 
+/**
+ * A component containing the contacts view for a user.
+ * @returns The contact view
+ */
 function Contacts() {
     const [contacts, setContacts] = useState([]);
     const [filteredContacts, setFilteredContacts] = useState([]);
@@ -9,7 +13,7 @@ function Contacts() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetchContacts(1);
+        fetchContacts();
     }, []);
 
     useEffect(() => {

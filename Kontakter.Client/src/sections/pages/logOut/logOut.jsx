@@ -1,5 +1,9 @@
 import { useEffect } from "react";
 
+/**
+ * A component containing the log out view
+ * @returns the log out view
+ */
 function logOut() {
     useEffect(() => {
         performLogOut();

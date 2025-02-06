@@ -1,6 +1,12 @@
 import TextField from "@mui/material/TextField";
 import { useEffect, useState } from "react";
 
+/**
+ * A component containing a search bar for filtering contacts
+ * @param {*} filter The current input to be used to filter contacts
+ * @param {*} setFilter A function for changing the filter
+ * @returns A search bar
+ */
 function searchBar({ filter, setFilter }) {
     
     const handleChange = (event) => {

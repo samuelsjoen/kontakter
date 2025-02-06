@@ -1,3 +1,9 @@
+/**
+ * Sends a request to the API to add a new contact.
+ * @param {*} formData The formdata including contact details
+ * @param {*} refreshContactGrid A function that refreshes the contact grid
+ */
+
 async function createContact(formData, refreshContactGrid) {
     try {
         const response = await fetch(`/Contact`, {

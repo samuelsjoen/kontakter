@@ -6,6 +6,11 @@ import LogOut from "./pages/logOut/logOut";
 
 import ProtectedRoute from "./protectedRoute";
 
+/**
+ * A component containing content of the website. This includes log in, sign up, log out and contact pages
+ * @param {*} title The title of the website 
+ * @returns the content view
+ */
 function Content({ title }) {
     return (
         <div className="content">

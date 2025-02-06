@@ -4,6 +4,16 @@ import Modal from "@mui/material/Modal";
 import ContactForm from "./contactForm";
 import { removeContact } from "../../api/removeContact";
 
+/**
+ * A component for a card containing a contact 
+ * @param {string} name The name of the contact
+ * @param {string} number The number of the contact
+ * @param {string} address The address of the contact
+ * @param {string} id The id of the contact
+ * @param {*} UID The user id who the contact belongs to
+ * @param {*} refreshContactGrid A function for refreshing the contact grid
+ * @returns A contact card 
+ */
 function ContactCard({ name, number, address, id, uid, refreshContactGrid }) {
 
     const [updateOpened, setUpdateOpen] = useState(false);
@@ -55,7 +65,7 @@ function ContactCard({ name, number, address, id, uid, refreshContactGrid }) {
 }
 
 
-
+{/* The default style of the pop up window. Fetched from MUI tutorial https://mui.com/material-ui/react-modal/*/}
 const updateStyle = {
     position: "absolute",
     top: "50%",

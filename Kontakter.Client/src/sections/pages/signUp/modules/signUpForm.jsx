@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * A component containing a form for providing signup details
+ * @returns The signup form
+ */
 function signUpForm() {
 
     const navigate = useNavigate();
@@ -14,7 +18,7 @@ function signUpForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!checkConditions()) {
-            throw new Error("Password does not meet conditions");
+            throw new Error("Password or e-mail does not meet conditions");
         }
 
         try {
