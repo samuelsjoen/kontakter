@@ -32,7 +32,7 @@ function contactForm({ name, number, address, id, uid, handleClose, refreshConta
                 id="name"
                 name="name"
                 value={formData.name}
-                refreshContactGrid={handleChange}
+                onChange={handleChange}
                 required
             />
 
@@ -42,7 +42,7 @@ function contactForm({ name, number, address, id, uid, handleClose, refreshConta
                 id="phone"
                 name="phone"
                 value={formData.phone}
-                refreshContactGrid={handleChange}
+                onChange={handleChange}
                 required
             />
 
@@ -52,7 +52,7 @@ function contactForm({ name, number, address, id, uid, handleClose, refreshConta
                 id="address"
                 name="address"
                 value={formData.address}
-                refreshContactGrid={handleChange}
+                onChange={handleChange}
             />
 
             <button onClick={handleSubmit}>{id ? "Oppdater" : "Lagre"}</button>

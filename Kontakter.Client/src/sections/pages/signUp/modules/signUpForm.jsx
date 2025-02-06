@@ -94,7 +94,7 @@ function signUpForm() {
                 id="email"
                 name="email"
                 value={formData.email}
-                refreshContactGrid={handleChange}
+                onChange={handleChange}
                 required
             />
 
@@ -105,7 +105,7 @@ function signUpForm() {
                 id="password"
                 name="password"
                 value={formData.password}
-                refreshContactGrid={handleChange}
+                onChange={handleChange}
                 required
             />
 
@@ -115,7 +115,7 @@ function signUpForm() {
                 id="repeatPassword"
                 name="repeatPassword"
                 value={formData.repeatPassword}
-                refreshContactGrid={handleChange}
+                onChange={handleChange}
                 required
             />
             <button type="submit">Registrer</button>

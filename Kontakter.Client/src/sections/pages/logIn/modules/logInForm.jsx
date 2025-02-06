@@ -48,7 +48,7 @@ function logInForm() {
                 id="email"
                 name="email"
                 value={formData.email}
-                refreshContactGrid={handleChange}
+                onChange={handleChange}
                 required
             />
 
@@ -59,7 +59,7 @@ function logInForm() {
                 id="password"
                 name="password"
                 value={formData.password}
-                refreshContactGrid={handleChange}
+                onChange={handleChange}
                 required
             />
 
