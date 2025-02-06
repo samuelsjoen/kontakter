@@ -101,6 +101,9 @@ body {
   text-align: center;
 }
 
+.contactForm label {
+  color: #333;
+}
 
 .logInForm button, .signUpForm button {
   margin-top: 20px;
@@ -249,6 +252,9 @@ body {
 }
 
 .contactCard .buttonRow .removeButton, .updateButton {
+
+  color:#ffffff;
+  background-color: rgb(78, 90, 135);
   transition: background-color 0.3s ease;
   border-radius: 5px;
 }
@@ -268,6 +274,7 @@ body {
 
 .addOrUpdateBox h3 {
   font-weight: 400;
+  color: #333;
 }
 
 .contactForm {
