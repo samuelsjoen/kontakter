@@ -4,6 +4,10 @@ import NavBar from "./sections/navBar";
 import Content from "./sections/content";
 import Footer from "./sections/footer";
 
+/**
+ * A component containing the website
+ * @returns the website
+ */
 function Website() {
 
   const websiteTitle = "Kontakter";

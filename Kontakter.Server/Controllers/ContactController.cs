@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Kontakter.Controllers
 {
+    /// <summary>
+    /// The API controller handling contact related requests.
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class ContactController(KontakterContext KontakterContext, ILogger<ContactController> logger) : ControllerBase

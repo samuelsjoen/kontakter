@@ -2,7 +2,17 @@ import React, { useState } from "react";
 import { createContact } from "../../api/createContact";
 import { updateContact } from "../../api/updateContact";
 
-function contactForm({ name, number, address, id, uid, handleClose, onChange }) {
+/**
+ * A component for a form containing contact details
+ * @param {string} name The name of the contact
+ * @param {string} number The number of the contact
+ * @param {string} address The address of the contact
+ * @param {string} id The id of the contact
+ * @param {*} UID The user id who the contact belongs to
+ * @param {*} refreshContactGrid A function for refreshing the contact grid
+ * @returns A contact form
+ */
+function contactForm({ name, number, address, id, uid, handleClose, refreshContactGrid }) {
     const [formData, setFormData] = useState({
         name: name,
         phone: number,
@@ -12,9 +22,9 @@ function contactForm({ name, number, address, id, uid, handleClose, onChange }) 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (id) {
-            updateContact(id, uid, formData, onChange);
+            updateContact(id, uid, formData, refreshContactGrid);
         } else {
-            createContact(formData, onChange);
+            createContact(formData, refreshContactGrid);
         }
         handleClose();
     };

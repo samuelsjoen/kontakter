@@ -2,6 +2,10 @@ import SearchBar from "./modules/searchBar"
 import ContactsGrid from "./modules/contactsGrid/contactsGrid";
 import { useEffect, useState } from "react";
 
+/**
+ * A component containing the contacts view for a user.
+ * @returns The contact view
+ */
 function Contacts() {
     const [contacts, setContacts] = useState([]);
     const [filteredContacts, setFilteredContacts] = useState([]);
@@ -9,7 +13,7 @@ function Contacts() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetchContacts(1);
+        fetchContacts();
     }, []);
 
     useEffect(() => {
@@ -36,7 +40,8 @@ function Contacts() {
                 credentials: "include",
             });
             if (!response.ok) {
-                throw new Error("Failed to fetch contacts");
+                const errorResponse = await response.json();
+                throw new Error(`Error when fetching contacts: ${errorResponse.message}`);
             }
             const contactsReceived = await response.json();
             console.log("Contacts fetched", contactsReceived);
@@ -44,7 +49,8 @@ function Contacts() {
             console.log(sortedContacts);
             setContacts(sortedContacts);
         } catch (e) {
-            console.error("Error:", e);
+            alert("There was an error fetching your contacts")
+            console.error("Error response:", e.message);
         } finally {
             setIsLoading(false);
         }
@@ -60,7 +66,7 @@ function Contacts() {
                     />
                     <ContactsGrid
                         contacts={filteredContacts}
-                        onChange={fetchContacts}
+                        refreshContactGrid={fetchContacts}
                     />
                 </>
             ) : (

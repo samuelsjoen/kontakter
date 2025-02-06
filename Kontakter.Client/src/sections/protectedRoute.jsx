@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 
+/**
+ * A component hiding or showing different components depending on authentication
+ * @param {*} children The components to be shown or hidden
+ * @returns a protected view of components
+ */
 function ProtectedRoute({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
 

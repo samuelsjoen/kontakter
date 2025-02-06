@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 
+/**
+ * A component containing a form for providing login details
+ * @returns The login form
+ */
 function logInForm() {
 
     const [formData, setFormData] = useState({
@@ -22,12 +26,13 @@ function logInForm() {
                 credentials: "include",
             });
             if (!response.ok) {
-                throw new Error("Login failed")
+                const errorResponse = await response.json();
+                throw new Error(`Error when logging in: ${errorResponse.message}`);
             }
             window.location.href = "/kontakter";
         } catch (e) {
             alert("Noe gikk galt ved innlogging");
-            console.log("Error:", e);
+            console.log("Error response:", e.message);
         }
         
     };

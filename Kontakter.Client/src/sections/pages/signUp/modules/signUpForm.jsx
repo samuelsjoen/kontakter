@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * A component containing a form for providing signup details
+ * @returns The signup form
+ */
 function signUpForm() {
 
     const navigate = useNavigate();
@@ -14,7 +18,7 @@ function signUpForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!checkConditions()) {
-            throw new Error("Password does not meet conditions");
+            throw new Error("Password or e-mail does not meet conditions");
         }
 
         try {
@@ -30,13 +34,14 @@ function signUpForm() {
             });
 
             if (!response.ok) {
-                throw new Error("Signup failed")
+                const errorRessponse = await response.json();
+                throw new Error(`Error during signup: ${errorRessponse.message}`);
             }
             alert("Bruker opprrettet. Du vil nå bli redigert for å logge inn")
             navigate("/logginn")
         } catch (e) {
             alert("Noe gikk galt ved registrering")
-            console.log("Error", e);
+            console.log("Error response", e.message);
         }
     };
 

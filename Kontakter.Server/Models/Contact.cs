@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Kontakter.Server.Models
 {
+    /// <summary>
+    /// A class for Contact objects
+    /// </summary>
     public class Contact
     {  
         [Key]

@@ -1,4 +1,9 @@
-async function removeContact( id, onChange ) {
+/**
+ * Sends a request to the API to delete a contact
+ * @param {string} id The id of the contact to be deleted
+ * @param {*} refreshContactGrid A function that refreshes the contact grid
+ */
+async function removeContact( id, refreshContactGrid ) {
     try {
         const response = await fetch(`/Contact?id=${id}`, {
             method: "DELETE",
@@ -9,13 +14,14 @@ async function removeContact( id, onChange ) {
             
         })
         if (!response.ok) {
-            throw new Error(`Failed to delete contact with ID ${id}`);
+            const errorResponse = await response.json();
+            throw new Error(`Error when deleting contact with ID ${id}: ${errorResponse.message}`);
         }
     } catch (e) {
         alert("Noe gikk galt ved sletting av kontakten");
-        console.log("Error:", e);
+        console.log("Error response: ", e.message);
     }
-    onChange();
+    refreshContactGrid();
 }
 
 export { removeContact }

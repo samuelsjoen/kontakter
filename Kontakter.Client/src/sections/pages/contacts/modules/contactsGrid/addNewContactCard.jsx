@@ -3,7 +3,12 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import ContactForm from "./contactForm"
 
-function addNewContactCard({ onChange }) {
+/**
+ * A component for creating a new contact
+ * @param {*} refreshContactGrid A function that refreshes the contact grid 
+ * @returns A create new contact card
+ */
+function addNewContactCard({ refreshContactGrid }) {
 
     const [addNewOpened, setAddNewOpen] = useState(false);
 
@@ -23,6 +28,8 @@ function addNewContactCard({ onChange }) {
             >
                 +
             </button>
+
+            {/* A pop up window which asks for contact details of the new contact */}
             <Modal
                 open={addNewOpened}
                 onClose={handleAddClose}
@@ -36,7 +43,7 @@ function addNewContactCard({ onChange }) {
                             address={""}
                             id={""}
                             handleClose={handleAddClose}
-                            onChange={onChange}
+                            refreshContactGrid={refreshContactGrid}
                         />
                     </div>
                 </Box>
@@ -45,6 +52,7 @@ function addNewContactCard({ onChange }) {
     )
 }
 
+{/* The default style of the pop up window. Fetched from MUI tutorial https://mui.com/material-ui/react-modal/*/}
 const addNewStyle = {
     position: "absolute",
     top: "50%",

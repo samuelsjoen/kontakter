@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { BrowserRouter as Router, Route, Routes, Link, Navigate } from "react-router-dom";
 
+/**
+ * A component containing the navigation bar of the website
+ * @returns the navigation bar
+ */
 function NavBar({ title }) {
     const [isAuthenticated, setIsAuthenticated] = useState(null);
 

@@ -1,4 +1,7 @@
-
+/**
+ * A component containing the footer of the website
+ * @returns the footer
+ */
 function Footer() {
     return (
         <div className="footer">
