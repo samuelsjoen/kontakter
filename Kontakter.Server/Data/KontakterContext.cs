@@ -4,6 +4,9 @@ using Kontakter.Server.Models;
 
 namespace Kontakter.Server.Data
 {
+    /// <summary>
+    /// The database context for the website.
+    /// </summary>
     public class KontakterContext : IdentityDbContext
     {
         public KontakterContext(DbContextOptions<KontakterContext> options)
